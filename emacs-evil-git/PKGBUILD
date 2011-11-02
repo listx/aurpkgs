@@ -25,6 +25,7 @@ build() {
     msg "The local files are updated."
   else
     git clone --depth 1 $_gitroot $_gitname
+    cd $_gitname
   fi
   msg "GIT checkout done"
 
@@ -33,7 +34,7 @@ build() {
   mkdir $srcdir/$_gitname-build
 
   # copy over git working tree files into build directory, excluding the heavy .git directory (and other useless .git files such as .gitignore)
-  ls -A $srcdir/$_gitname | grep -v .git | xargs -d '\n' cp -r -t $srcdir/$_gitname-build
+  ls -A | grep -v .git | xargs -d '\n' cp -r -t $srcdir/$_gitname-build
 
   # inside build directory, run the Makefile
   cd $srcdir/$_gitname-build
