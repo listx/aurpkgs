@@ -21,8 +21,7 @@ build() {
   # checkout the latest GIT source code
   msg "Connecting to the GIT server...."
   if [[ -d $srcdir/$_gitname ]] ; then
-    cd $_gitname
-    git pull origin
+    cd $_gitname && git pull origin
     msg "The local files are updated."
   else
     git clone --depth 1 $_gitroot $_gitname
