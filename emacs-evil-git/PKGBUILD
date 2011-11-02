@@ -16,6 +16,7 @@ _gitroot="git://gitorious.org/evil/evil.git"
 _gitname="evil"
 
 build() {
+  # $srcdir is an absolute path!
   cd $srcdir
 
   # checkout the latest GIT source code
