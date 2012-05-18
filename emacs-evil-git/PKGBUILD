@@ -14,6 +14,7 @@ install=$pkgname.install
 
 _gitroot="git://gitorious.org/evil/evil.git"
 _gitname="evil"
+_gitbranch="master"
 
 build() {
   cd $srcdir # $srcdir is an absolute path for convenience
@@ -22,6 +23,7 @@ build() {
   if [[ -d $_gitname ]]; then
     cd $_gitname
     msg "Sanitizing work tree..."
+    git checkout $_gitbranch
     git clean -dxf # remove all untracked files (this should be even more robust than running `make clean')
     git reset --hard # discard all changes to tracked files (if they had been tampered with somehow)
     msg "Pulling from official repo $_gitroot ..."
