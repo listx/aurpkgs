@@ -21,7 +21,7 @@ build() {
     git clean -dxf
     git reset --hard
     msg "Pulling from GIT server..."
-    git pull
+    git pull --rebase
   else
     git clone --depth 1 $_gitroot $_gitnamebranch
     cd $_gitnamebranch
