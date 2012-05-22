@@ -28,6 +28,9 @@ build() {
     git pull --rebase
     git checkout mod
   fi
+
+  # compile for speed
+  emacs -batch -f batch-byte-compile *.el
 }
 
 package() {
