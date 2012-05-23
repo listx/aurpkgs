@@ -1,6 +1,6 @@
 # Contributor: listdata <linusarver <at> gmail <dot> com>
 pkgname=emacs-zenburn-emacs-mod-git
-pkgver=20120521
+pkgver=20120522
 pkgrel=1
 _gitname="zenburn-emacs"
 _gitnamebranch="zenburn-emacs-mod"
