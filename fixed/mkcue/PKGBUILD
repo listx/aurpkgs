@@ -12,6 +12,9 @@ conflicts=('mkcue')
 source=(https://diplodocus.org/dist/audio/mkcue-1.tar.bz2
         http://ftp.debian.org/debian/pool/main/m/mkcue/mkcue_1-2.1.diff.gz
         install_man.patch)
+md5sums=('eaabed5c5f1c1562715329889a59c837'
+         '341cedde19128847c95caa1b85fa3cd4'
+         '086900fbeb40a05e912adf36aa6f3055')
 
 build() {
     mkdir -p $startdir/pkg/usr/bin
@@ -30,10 +33,6 @@ build() {
     make
     make DESTDIR=$startdir/pkg install
 }
-
-md5sums=('eaabed5c5f1c1562715329889a59c837'
-         '341cedde19128847c95caa1b85fa3cd4'
-         '086900fbeb40a05e912adf36aa6f3055')
 
 package() {
     # copy binary
