@@ -30,7 +30,7 @@ build() {
   fi
 
   # compile for speed
-  emacs -batch -f batch-byte-compile *.el
+  #emacs -batch -f batch-byte-compile *.el
 }
 
 package() {
