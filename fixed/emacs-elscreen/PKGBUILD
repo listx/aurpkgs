@@ -21,8 +21,12 @@ build() {
   cd $srcdir/elscreen-$pkgver
   mkdir -p $pkgdir/usr/share/emacs/site-lisp
 
-  # apply patch to fix http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=581935
-  # (see patch for details)
+  # Apply patch to fix
+  # http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=581935
+  #
+  # The bug prevents emacs from opening a file with the message
+  #     "Symbol's value as variable is void: dir"
+  # . See patch for details.
   patch -p1 -i $srcdir/03_fix_emacs-command-line.dpatch
 
   emacs --batch --eval '(progn
