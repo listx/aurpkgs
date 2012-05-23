@@ -21,6 +21,7 @@ build() {
     patch -Np1 -i $srcdir/mkcue-1.patch
 
     # man page
+    gzip mkcue.1
     patch -Np0 -i $srcdir/install_man.patch
 
     ./configure --prefix=/usr --mandir=/usr/share/man/man1
