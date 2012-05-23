@@ -19,7 +19,6 @@ md5sums=('67d6b8913957ccacefef09c549a939fd'
 
 build() {
   cd $srcdir/elscreen-$pkgver
-  mkdir -p $pkgdir/usr/share/emacs/site-lisp
 
   # Apply patch to fix
   # http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=581935
@@ -32,14 +31,9 @@ build() {
   emacs --batch --eval '(progn
 			(push "." load-path)
 			(byte-compile-file "elscreen.el"))'
-  cp elscreen.el{,c} $pkgdir/usr/share/emacs/site-lisp
+}
 
-  modules= #"dired dnd gf goby howm server w3m wl"
-  for module in $modules; do
-    cp ../elscreen-$module-*/elscreen-$module.el .
-    emacs --batch --eval "(progn
-			  (push \".\" load-path)
-			  (byte-compile-file \"elscreen-$module.el\"))"
-    cp elscreen-$module.el{,c} $pkgdir/usr/share/emacs/site-lisp
-  done
+package() {
+  install -d $pkgdir/usr/share/emacs/site-lisp
+  cp $srcdir/elscreen-$pkgver/elscreen.el{,c} $pkgdir/usr/share/emacs/site-lisp
 }

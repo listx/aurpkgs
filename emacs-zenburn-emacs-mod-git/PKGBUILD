@@ -1,20 +1,26 @@
 # Contributor: listdata <linusarver <at> gmail <dot> com>
 pkgname=emacs-zenburn-emacs-mod-git
-pkgver=20120522
+pkgver=20120523
 pkgrel=1
 _gitname="zenburn-emacs"
 _gitnamebranch="zenburn-emacs-mod"
 _gitroot="git://github.com/listx/$_gitname"
-pkgdesc="$_gitname: a zenburn-like color theme for GNU Emacs "
+pkgdesc="a zenburn-like color theme for GNU Emacs "
 arch=('any')
 url="https://github.com/listx/$_gitname"
 depends=('emacs<24' 'emacs-color-theme')
 makedepends=('git')
 license=('GPL')
+provides=('emacs-zenburn-emacs-mod')
+conflicts=('emacs-zenburn-emacs-mod')
 install=$pkgname.install
 
 build() {
-  cd $srcdir
+  # create persistent packaging/build directories
+  mkdir -p $startdir/pkg
+  mkdir -p $startdir/src
+
+  cd $startdir/src
 
   if [[ -d $_gitnamebranch ]]; then
     cd $_gitnamebranch
@@ -35,7 +41,7 @@ build() {
 
 package() {
   # create destination path
-  install -d $pkgdir/usr/share/emacs/site-lisp/$_gitnamebranch
+  install -d $startdir/pkg/usr/share/emacs/site-lisp/$_gitnamebranch
   # copy over files into path
-  cp $srcdir/$_gitnamebranch/*.el $pkgdir/usr/share/emacs/site-lisp/$_gitnamebranch
+  cp $startdir/src/$_gitnamebranch/*.el $startdir/pkg/usr/share/emacs/site-lisp/$_gitnamebranch
 }

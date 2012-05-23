@@ -5,8 +5,10 @@ pkgrel=3
 pkgdesc="A CUE sheet generator that purportedly works better than cdrdao. It is also the only CUE generator for abcde."
 arch=(i686 x86_64)
 url="https://diplodocus.org/dist/audio/"
-license=('GPL')
 depends=('make')
+license=('GPL')
+provides=('mkcue')
+conflicts=('mkcue')
 source=(https://diplodocus.org/dist/audio/mkcue-1.tar.bz2
         http://ftp.debian.org/debian/pool/main/m/mkcue/mkcue_1-2.1.diff.gz
         install_man.patch)

@@ -5,18 +5,22 @@ pkgrel=1
 _gitname="haskell-mode"
 _gitnamebranch="haskell-mode"
 _gitroot="git://github.com/haskell/$_gitname"
-pkgdesc="$_gitname: Haskell syntax highlighting, etc. for GNU Emacs"
+pkgdesc="Haskell syntax highlighting, etc. for GNU Emacs"
 arch=('any')
 url="https://github.com/haskell/$_gitname"
 depends=('emacs')
-provides=('emacs-haskell-mode')
-conflicts=('emacs-haskell-mode')
 makedepends=('git')
 license=('GPL')
+provides=('emacs-haskell-mode')
+conflicts=('emacs-haskell-mode')
 install=$pkgname.install
 
 build() {
-  cd $srcdir
+  # create persistent packaging/build directories
+  mkdir -p $startdir/pkg
+  mkdir -p $startdir/src
+
+  cd $startdir/src
 
   if [[ -d $_gitnamebranch ]]; then
     cd $_gitnamebranch
@@ -31,12 +35,12 @@ build() {
   fi
 
   # compile for speed
-  emacs -batch --eval '(setq load-path (cons "." load-path))' -f batch-byte-compile $srcdir/$_gitnamebranch/*.el
+  emacs -batch --eval '(setq load-path (cons "." load-path))' -f batch-byte-compile $startdir/src/$_gitnamebranch/*.el
 }
 
 package() {
   # create destination path
-  install -d $pkgdir/usr/share/emacs/site-lisp/$_gitnamebranch
+  install -d $startdir/pkg/usr/share/emacs/site-lisp/$_gitnamebranch
   # copy over files into path
-  cp $srcdir/$_gitnamebranch/*.el* $pkgdir/usr/share/emacs/site-lisp/$_gitnamebranch
+  cp $startdir/src/$_gitnamebranch/*.el* $startdir/pkg/usr/share/emacs/site-lisp/$_gitnamebranch
 }
