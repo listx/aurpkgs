@@ -16,8 +16,7 @@ conflicts=('emacs-zenburn-emacs-mod')
 install=$pkgname.install
 
 build() {
-  # create persistent packaging/build directories
-  mkdir -p $startdir/pkg
+  # create persistent build directory
   mkdir -p $startdir/src
 
   cd $startdir/src
@@ -41,7 +40,7 @@ build() {
 
 package() {
   # create destination path
-  install -d $startdir/pkg/usr/share/emacs/site-lisp/$_gitnamebranch
+  install -d $pkgdir/usr/share/emacs/site-lisp/$_gitnamebranch
   # copy over files into path
-  cp $startdir/src/$_gitnamebranch/*.el $startdir/pkg/usr/share/emacs/site-lisp/$_gitnamebranch
+  cp $startdir/src/$_gitnamebranch/*.el $pkgdir/usr/share/emacs/site-lisp/$_gitnamebranch
 }
