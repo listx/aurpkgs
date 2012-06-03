@@ -41,7 +41,7 @@ build() {
   # nullfs
   g++ -lfuse -o nullfs nullfs.c++
   # nulnfs
-  gcc -o nulnfs -lfuse nulnfs.c
+  gcc -lfuse -o nulnfs nulnfs.c
 }
 
 package() {
