@@ -3,6 +3,7 @@ post_install() {
     echo "Add these lines to ~/.emacs:"
     echo "  (require 'color-theme-zenburn-mod)"
     echo "  (color-theme-zenburn-mod)"
+    echo "Also, see README-mod in /usr/share/emacs/site-lisp/zenburn-emacs-mod/README-mod for information regarding how to highlight numbers (decimal, hex, float, octal)."
 }
 
 # Message displayed afteer package removal.
