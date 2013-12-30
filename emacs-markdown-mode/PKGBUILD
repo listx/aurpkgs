@@ -7,10 +7,10 @@ arch=('any')
 url="http://jblevins.org/projects/markdown-mode"
 license=('GPL')
 depends=('emacs')
-provides=(	'emacs-markdown-mode'
-)
-conflicts=(	'emacs-markdown-mode'
-		'emacs-markdown-mode-git'
+provides=('emacs-markdown-mode')
+conflicts=(
+	'emacs-markdown-mode'
+	'emacs-markdown-mode-git'
 )
 install=$pkgname.install
 source="$url/markdown-mode.el"
