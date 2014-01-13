@@ -1,6 +1,9 @@
+*.7z
+*.swp
 *.tar.xz
 *.tar.gz
-*.swp
+*.txt
+*.zip
+*.ZIP
 pkg
 src
-
