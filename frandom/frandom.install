@@ -1,0 +1,22 @@
+# arg 1: the new package version
+# arg 2: the old package version
+
+post_install () {
+  echo ">> Add frandom to /etc/modules-load.d/ if you want the module to load on boot;"
+  echo ">>> see modules-load.d (5) for more information."
+  echo ">> This module needs to be recompiled for every kernel version upgrade."
+  depmod -a
+}
+
+pre_remove () {
+  rmmod frandom 2> /dev/null
+  rm /dev/frandom /dev/erandom 2> /dev/null
+}
+
+post_remove () {
+  depmod -a
+}
+
+op=$1
+shift
+$op $*
