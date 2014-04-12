@@ -10,9 +10,9 @@ url="http://frandom.sourceforge.net/"
 license=('GPL')
 
 ## These change with different kernels ##
-depends=('linux>=3.8' 'linux<3.9')
-makedepends=('linux-headers>=3.8' 'linux-headers<3.9')
-_extramodules='extramodules-3.8-ARCH'
+depends=('linux>=3.8' 'linux<=3.14')
+makedepends=('linux-headers>=3.8' 'linux-headers<=3.14')
+_extramodules='extramodules-3.14-ARCH'
 _modulelocation='/usr/lib/modules'
 
 install=frandom.install
@@ -34,5 +34,5 @@ package() {
 
 	gzip < ${pkgname}.ko > ${pkgname}.ko.gz
 	install -m 644 -D ${pkgname}.ko.gz ${pkgdir}/${_modulelocation}/${_extramodules}/${pkgname}.ko.gz
-	install -m 644 -D 10-${pkgname}.rules ${pkgdir}/etc/udev/rules.d/10-${pkgname}.rules
+	install -m 644 -D 10-${pkgname}.rules ${pkgdir}/usr/lib/udev/rules.d/10-${pkgname}.rules
 }
