@@ -1,6 +1,6 @@
 # Contributor: listx <linusarver <at> gmail <dot> com>
 pkgname=emacs-yaml-mode-git
-pkgver=20120606
+pkgver=20141112
 pkgrel=1
 _gitname="yaml-mode"
 _gitroot="git://github.com/yoshiki/$_gitname"
