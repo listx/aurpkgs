@@ -15,8 +15,8 @@ depends=('brother-lpr-drivers-ac' 'brother-cups-wrapper-common')
 source=(http://mirrors.kernel.org/ubuntu/pool/multiverse/b/${pkgname}/${pkgname}_${pkgver}-1-0ubuntu1_${_a}.deb)
 
 build() {
- cd $srcdir || return 1
- ar -x ${pkgname}_${pkgver}-1-0ubuntu1_${_a}.deb || return 1
- cd $pkgdir || return 1
- tar -xzf ${srcdir}/data.tar.gz || return 1
+	cd $srcdir
+	ar -x ${pkgname}_${pkgver}-1-0ubuntu1_${_a}.deb
+	cd $pkgdir
+	tar -xzf ${srcdir}/data.tar.gz
 }
