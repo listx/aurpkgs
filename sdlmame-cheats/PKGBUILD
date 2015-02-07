@@ -1,5 +1,6 @@
 # Contributor: Anton Shestakov <engored*ya.ru>
 # Maintainer: listx <linusarver <at> gmail <dot> com>
+# This PKGBUILD lives at https://github.com/listx/aurpkgs
 
 pkgname=sdlmame-cheats
 pkgver=0.156
